@@ -101,7 +101,6 @@ INSERT INTO pizza_toppings (topping_id, topping_name) VALUES
   (11, 'Tomatoes'),
   (12, 'Tomato Sauce');
 
--- TABLES AND DATA OMITTED HERE FOR BREVITY (already provided above) --
 -- 	A. Pizza Metrics
 
 -- 1. How many pizzas were ordered?
@@ -283,13 +282,6 @@ GROUP BY exclusions
 ORDER BY freq DESC
 LIMIT 1;
 
--- 4. Formatted order descriptions
--- Requires string functions and possibly stored procedures - omitted here
-
--- 5. Alphabetized ingredient list with 2x extras (conceptual - complex string manipulation needed)
-
--- 6. Total quantity of ingredients used (complex JOIN + string split needed - typically done in app layer)
-
 -- D. Pricing and Ratings --
 
 -- 1. Total revenue (Meatlovers $12, Vegetarian $10)
@@ -362,7 +354,3 @@ FROM customer_orders co
 JOIN runner_orders ro ON co.order_id = ro.order_id
 JOIN pizza_names pn ON co.pizza_id = pn.pizza_id
 WHERE ro.pickup_time NOT IN ('null', '') AND ro.cancellation IS NULL;
-
--- E. Bonus: Add Supreme Pizza
-INSERT INTO pizza_names (pizza_id, pizza_name) VALUES (3, 'Supreme');
-INSERT INTO pizza_recipes (pizza_id, toppings) VALUES (3, '1,2,3,4,5,6,7,8,9,10,11,12');
